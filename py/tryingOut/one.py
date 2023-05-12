@@ -23,7 +23,7 @@ a = 1
 
 b = "I am the number => " """
 
-# ***** I am the function ****** #
+# ***** I am the function or "rf" keyword ****** #
 def check_correct_greeeting(greeting):
     if greeting == "Hail Our Robot Overlords!":
       print("You may proceed...")
