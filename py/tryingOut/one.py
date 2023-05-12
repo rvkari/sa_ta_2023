@@ -18,3 +18,7 @@ def testWithBrowser(browser):
 
 #activeBrowser = testWithBrowser("Chrome")
 testWithBrowser("Firefox")
+
+a = 1
+
+b = "I am the number => "
