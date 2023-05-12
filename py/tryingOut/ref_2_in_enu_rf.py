@@ -5,3 +5,5 @@ def Loop_with_index_over_letters(letterList):
         print( index+1, character)
 
 Loop_with_index_over_letters(letters)
+
+# Daniel has added a comment
