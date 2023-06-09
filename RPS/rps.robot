@@ -14,18 +14,18 @@ RPS get Power
     [return]    ${output}
 
 *** Test Cases ***
-Turn on Power supply P62 remotely
-     ${out}=    RPS send commands     SetPower  2  1
+Turn on Power supply Helsinki remotely
+     ${out}=    RPS send commands     SetPower  Helsinki  1
      Should be equal    ${out}  ${True}
 
-Verify power supply P62 is on
+Verify power supply Helsinki is on
     ${out}=     RPS get power    GetPower
-    should contain    ${out}  P62=1
+    should contain    ${out}  Helsinki=1
 
-Turn off Power supply P62 remotely
-     ${out}=    RPS send commands     SetPower  2  0
+Turn off Power supply Espoo remotely
+     ${out}=    RPS send commands     SetPower  Espoo  0
      Should be equal    ${out}  ${True}
 
-Verify power supply P62 is off
+Verify power supply Espoo is off
     ${out}=     RPS get power    GetPower
-    should contain    ${out}  P62=0
+    should contain    ${out}  Espoo=0

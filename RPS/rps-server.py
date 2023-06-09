@@ -10,9 +10,9 @@ users = {
 }
 app.url_map.strict_slashes = False
 
-PINS = ['P60', 'P61', 'P62', 'P63']
+PINS = ['Helsinki', 'Espoo', 'Vantaa', 'Tampere']
 
-PINS_STATUS = {'P60':'0', 'P61': '0', 'P62':'0', 'P63':'0'}
+PINS_STATUS = {'Helsinki':'0', 'Espoo': '0', 'Vantaa':'0', 'Tampere':'0'}
 
 @auth.get_password
 def get_pw(username):
@@ -26,10 +26,10 @@ def index():
         return "Hello, %s!" % auth.username()
 
 def get_html_string():
-        html_str = '<html>P60={}P61={}P62={}P63={}</html>'.format(PINS_STATUS['P60'],
-                                                PINS_STATUS['P61'],
-                                            PINS_STATUS['P62'],
-                                            PINS_STATUS['P63'])
+        html_str = '<h1>*Helsinki={} *Espoo={} *Vantaa={} *Tampere={}</h1>'.format(PINS_STATUS['Helsinki'],
+                                                PINS_STATUS['Espoo'],
+                                            PINS_STATUS['Vantaa'],
+                                            PINS_STATUS['Tampere'])
         return html_str
 
 def parse_cmd_args(args):

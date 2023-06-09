@@ -17,7 +17,8 @@ class commands(object):
         return self.query
 
     def get_port_no(self, port_no):
-        port = 'P6' + str(port_no)
+        #port = 'P6' + str(port_no)
+        port = str(port_no)
         return port
 
     def clean_html(self, data):
