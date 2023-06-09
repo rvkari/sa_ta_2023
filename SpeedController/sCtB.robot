@@ -1,6 +1,6 @@
 *** Settings ***
-#Library    keywords.robot
-Library    Car.py    WITH NAME    volkswagen
+Resource     keywords.resource
+#Library    Car.py    WITH NAME    volkswagen
 
 
 *** Variables ***
@@ -9,34 +9,9 @@ Library    Car.py    WITH NAME    volkswagen
 ${VARIABLE_1}    I am an string
 ${VARIABLE_n}    123
 
-*** Keywords ***
-I am just printing to the console
-    [Arguments]    ${var1}    ${var2}
-    Log    ${var1}
-    Log    ${var2}
-
-    Log To Console    ${var1} ${var2}   
-
 *** Test Cases ***
-Create an object
-    [Documentation]    This calls the python app directly
-
-    #FOR    ${element}    IN    @{SPEED_LIMIT}
-        #Log To Console    ${element}
-        
-    #END
-
-    FOR    ${current_speed_limit}    IN    @{SPEED_LIMIT}
-        Log    ${current_speed_limit}
-
-        volkswagen.Set Speed Limit    ${current_speed_limit}
-        volkswagen.Car Is Moving
-        volkswagen.Speed Is Within Limit
-        volkswagen.Reset Speed
-
-        Log To Console    ${current_speed_limit}
-        
-    END
+Test car
+    volkswagen
 
 Test passing 2 global variables
     I am just printing to the console    ${VARIABLE_1}   ${VARIABLE_n}
