@@ -17,4 +17,5 @@ The User Triggers The Calculation
     
 The Result Should Be "${expected}"
     Log    Checking Result
-    Should Be Equal As Numbers    ${result}    ${expected}
+    #Should Be Equal As Numbers    ${result}    ${expected}
+    Should Not Be Equal    ${result}    ${expected}

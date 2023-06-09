@@ -26,9 +26,9 @@ Test computing multiple numerical systems
     Then The Result Should Be "11"
 
 #What happen if an invalid value (character) is added to the computation
-#Test computing an invalid value
-    #Given The Calculator Is Running
-    #When The User Enters The Term "0xA+0xB"
-    #And The User Triggers The Calculation
-    #Then The Result Should Be "21"
+Test computing an invalid value
+    Given The Calculator Is Running
+    When The User Enters The Term "0x1AFF+1"
+    And The User Triggers The Calculation
+    Then The Result Should Be "1"
     
