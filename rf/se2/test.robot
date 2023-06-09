@@ -14,7 +14,7 @@ Simple Test Case
     Should Be True    5 + 5 == 10
 
 Test with Keywords
-    Store Text    Hail Our Robot
+    Store Text    TA2023 RF tests         #Hail Our Robot
     Add Text To Stored Text     Overlords!
     Verify Stored Text Length    25
     ${current_text}=    Get Stored Text

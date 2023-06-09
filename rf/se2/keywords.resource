@@ -6,7 +6,7 @@ Library    DateTime
 *** Keywords ***
 Store Text
     [Arguments]    ${text}
-    log    The text "${text}" will be store in the variable \${stored_text}.
+    Log    The text "${text}" will be store in the variable \${stored_text}.
     Set Suite Variable    ${stored_text}    ${text}
 
 Add Text To Stored Text
