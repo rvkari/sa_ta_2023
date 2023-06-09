@@ -1,3 +1,7 @@
+var1 = 1
+var = "I am an string"
+
+
 def start_calculator():
     print("Calculator Started")
 
