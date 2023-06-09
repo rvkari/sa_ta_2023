@@ -17,10 +17,18 @@ Test computing floating numbers / decimal numbers
     And The User Triggers The Calculation
     Then The Result Should Be "3.8"
 
+
 #What happen if an invalid value (character) is added to the computation
-Test computing an invalid value
+Test computing multiple numerical systems
     Given The Calculator Is Running
-    When The User Enters The Term ""
+    When The User Enters The Term "0xA+0b1"
     And The User Triggers The Calculation
-    Then The Result Should Be ""
+    Then The Result Should Be "0xB"
+
+#What happen if an invalid value (character) is added to the computation
+#Test computing an invalid value
+    #Given The Calculator Is Running
+    #When The User Enters The Term "0xA+0xB"
+    #And The User Triggers The Calculation
+    #Then The Result Should Be "21"
     
