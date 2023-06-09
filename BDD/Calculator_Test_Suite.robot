@@ -23,7 +23,7 @@ Test computing multiple numerical systems
     Given The Calculator Is Running
     When The User Enters The Term "0xA+0b1"
     And The User Triggers The Calculation
-    Then The Result Should Be "0xB"
+    Then The Result Should Be "11"
 
 #What happen if an invalid value (character) is added to the computation
 #Test computing an invalid value
