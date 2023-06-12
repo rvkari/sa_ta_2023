@@ -13,6 +13,7 @@ Run keyword until MAX_ITER matches internal counter
     ${hi2_spanish}=     Set Variable            Hola mundo!
     ${var1}	${var2}=    Set Variable            Hello   12345
 
+    Log               ${HI}     # This adds the variable to the report files
     Log To Console    ${HI}
     Log To Console    ${hi2_spanish}
     Log To Console    ${var1}
