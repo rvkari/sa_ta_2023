@@ -1,11 +1,15 @@
 *** Settings ***
 Library      commands.py
+Library    Collections
 #Resource    my.resource
 
 *** Variables ***
 @{LIST_CITIES}      Helsinki        Tampere         Vantaa
-@{LIST_HEL_DIS}     Hel-Töölo       Hel-Pasila      Hel-Kamppi   Hel-Pasila    Hel-Kamppi
+
+@{LIST_HEL_DIS}     Hel-Töölo       Hel-Pasila      Hel-Kamppi
 @{LIST_TRE_DIS}     Tre-A            Tre-B
+
+${CITIES_DIST}    
 
 *** Keywords ***
 RPS send commands
@@ -25,12 +29,36 @@ RF functionality
     ${l_cities}         Get Length    ${LIST_CITIES} 
     ${l_districts}      Get Length    ${districts} 
 
-    Log To Console    ${l_cities}
-    Log To Console    ${l_districts}
+    #Log To Console    ${l_cities}
+    #Log To Console    ${l_districts}
 
     [Return]    @{districts}
 
     #Return From Keyword    @{districts}
+
+rf dicops
+
+    ${local_dic}=    Create Dictionary
+
+    FOR    ${city}    IN    @{LIST_CITIES}
+        IF    "${city}" == "Helsinki"
+            Set To Dictionary    ${local_dic}    ${city}    ${LIST_HEL_DIS}
+        
+        ELSE IF    "${city}" == "Tampere"
+            Set To Dictionary    ${local_dic}    ${city}    ${LIST_TRE_DIS}
+        
+        ELSE
+            Set To Dictionary    ${local_dic}    ${city}    None
+        END
+    END
+    
+
+    #Log To Console    ${local_dic}
+    #Log To Console    ${CITIES_DIST}
+
+    Set Global Variable   ${CITIES_DIST}     ${local_dic}    # USE keyword/fnc || Set Global Variable ||    <${YOUR_GLOBAL}>    <${YOUR LOCAL}> 
+    Log To Console    ${CITIES_DIST}
+
 
 for loop for printing the Cities and districts
     # Create a local list containing districs of a city
@@ -92,6 +120,7 @@ Testing the functionality of rf
     RF functionality
 
 Testing loops
-    for loop for printing the Cities and districts
-    while loop for printing the Cities and districts
+    #for loop for printing the Cities and districts
+    #while loop for printing the Cities and districts
+    rf dicops
     
