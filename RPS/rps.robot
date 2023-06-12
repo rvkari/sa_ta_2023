@@ -82,6 +82,13 @@ for loop for printing the Cities and districts
         
     #END
 
+my for loop for cities        # TODO: you can inplement the for loop for changing the state in here and then call ít from the main keyword or any test it might be useful 
+    [Arguments]    ${state}
+    FOR    ${city}    IN    @{LIST_CITIES}
+        Log    ${city}
+        
+    END
+
 while loop for printing the Cities and districts
 
     # Create a local list containing districs of a city
@@ -96,6 +103,41 @@ while loop for printing the Cities and districts
         
         
     END
+
+Set power on and off
+    [Arguments]    ${state}    # on=1 and off=0
+    #Log To Console    ${state}
+
+    IF    ${state} == 1
+        FOR    ${city}    IN    @{LIST_CITIES}
+            #Log To Console    ${city}
+            
+            ${out}=    RPS send commands     SetPower   ${city}      1
+            Should be equal    ${out}  ${True} 
+
+            
+            Log To Console    Verifying power on given cities is on
+
+            ${out}=     RPS get Power    GetPower
+            should contain    ${out}  ${city}=1
+        END      
+    
+    ELSE IF    ${state} == 0
+        FOR    ${city}    IN    @{LIST_CITIES}
+            #Log To Console    ${city}
+            
+            ${out}=    RPS send commands     SetPower   ${city}      0
+            Should be equal    ${out}  ${True} 
+
+            Log To Console    Verifying power on given cities is off
+
+            ${out}=     RPS get Power    GetPower
+            should contain    ${out}  ${city}=0
+        END 
+    ELSE 
+        Log To Console    You have intruduce an invalid state
+    END
+
 
 *** Test Cases ***
 Turn on Power supply Helsinki remotely
@@ -123,4 +165,12 @@ Testing loops
     #for loop for printing the Cities and districts
     #while loop for printing the Cities and districts
     rf dicops
+
+Test to power on the listed cities to be on and off
+    Log To Console    Power to be switched on in all cities
+    Set power on and off    1
+
+    Log To Console    Power to be switched off in all cities
+    Set power on and off    0
+    
     
