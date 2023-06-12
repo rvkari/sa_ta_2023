@@ -3,7 +3,9 @@ Library      commands.py
 #Resource    my.resource
 
 *** Variables ***
-@{LIST_CITIES}        Helsinki    Tampere    Vantaa
+@{LIST_CITIES}      Helsinki        Tampere         Vantaa
+@{LIST_HEL_DIS}     Hel-Töölo       Hel-Pasila      Hel-Kamppi   Hel-Pasila    Hel-Kamppi
+@{LIST_TRE_DIS}     Tre-A            Tre-B
 
 *** Keywords ***
 RPS send commands
@@ -26,21 +28,44 @@ RF functionality
     Log To Console    ${l_cities}
     Log To Console    ${l_districts}
 
+    [Return]    @{districts}
+
+    #Return From Keyword    @{districts}
+
 for loop for printing the Cities and districts
-    #Cities
-    FOR    ${element}    IN    @{LIST}
-        Log To Console    ${element}
+    # Create a local list containing districs of a city
+    @{a_list}   RF functionality
+    #Cities and their districts
+    FOR    ${city}    IN    @{LIST_CITIES}
+        IF    "${city}" == "Helsinki"
+            FOR    ${district}    IN    @{a_list}
+                Log To Console    ${district}
+            END
+            
+        END
+
+        Log To Console    ${city}
         
     END
 
     #Districts
-    FOR    ${element}    IN    @{LIST}
-        Log To Console    ${element}
+    #FOR    ${district}    IN    @{a_list}
+        #Log To Console    ${district}
         
-    END
+    #END
 
 while loop for printing the Cities and districts
-    WHILE    $var_in_py_expr1 == $var_in_py_expr2
+
+    # Create a local list containing districs of a city
+    ${counter}=    Set Variable    0
+
+    ${l_cities}         Get Length    ${LIST_CITIES}      #[0..2] -> Get Length as 3 items existing in the list  
+
+    WHILE    ${counter} < ${l_cities}     #[0..2] by typing <=3 the loop will actuallt iterate 4x not 3x
+
+        Log To Console    ${LIST_CITIES}[${counter}]
+        ${counter}    Evaluate    ${counter}+1
+        
         
     END
 
@@ -65,3 +90,8 @@ Verify power supply Espoo is off
 ### Optimized test case  for testing the RPS on 3 Cities
 Testing the functionality of rf
     RF functionality
+
+Testing loops
+    for loop for printing the Cities and districts
+    while loop for printing the Cities and districts
+    
