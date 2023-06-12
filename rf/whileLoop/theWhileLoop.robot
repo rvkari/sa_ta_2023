@@ -27,4 +27,5 @@ Run keyword until MAX_ITER matches internal counter
 
 *** Test Cases ***
 Testing the while loop
+    [Tags]    Smoke test
     Run keyword until MAX_ITER matches internal counter    ${MAX_ITER}
