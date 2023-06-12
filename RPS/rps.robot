@@ -86,7 +86,6 @@ my for loop for cities        # TODO: you can inplement the for loop for changin
     [Arguments]    ${state}
     FOR    ${city}    IN    @{LIST_CITIES}
         Log    ${city}
-        
     END
 
 while loop for printing the Cities and districts
